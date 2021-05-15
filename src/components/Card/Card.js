@@ -13,6 +13,12 @@ export const CardHeader = styled.div`
   border-bottom: 1px solid var(--colors-mischka);
   border-top-left-radius: var(--radius);
   border-top-right-radius: var(--radius);
+
+  ${({small}) => small && `
+    padding: 16px var(--spacer);
+    margin-bottom: calc(-1 * var(--spacer));
+    border: none;
+  `}
 `;
 
 export const CardBody = styled.div`

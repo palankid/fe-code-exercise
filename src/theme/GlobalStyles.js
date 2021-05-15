@@ -19,7 +19,6 @@ const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: var(--font-primary);
-    ${({ theme }) => theme.typography.body};
     box-sizing: border-box;
   }
 

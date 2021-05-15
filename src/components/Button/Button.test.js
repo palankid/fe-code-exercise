@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import Button from '../';
+import Button from './Button';
 
 describe('Button', () => {
   it('renders correctly', () => {
@@ -25,5 +25,21 @@ describe('Button', () => {
 
     fireEvent.click(button);
     expect(clickFn).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not be clickable while loading state is on', () => {
+    const clickFn = jest.fn();
+    render(
+      <Button data-foo="12" onClick={clickFn} progress>
+        Hello
+      </Button>
+    );
+
+    const button = screen.getByTestId('progressIcon');
+
+    fireEvent.click(button);
+    
+    expect(button).toBeInTheDocument();
+    expect(clickFn).toHaveBeenCalledTimes(0);
   });
 });

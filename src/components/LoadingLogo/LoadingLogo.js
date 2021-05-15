@@ -32,6 +32,7 @@ const LogoLeft = styled.path``;
 const LogoRight = styled.path``;
 
 const Wrapper = styled.div`
+  display: inline-block;
   width: 36px;
 
   ${LogoLeft} {

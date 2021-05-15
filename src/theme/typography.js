@@ -26,6 +26,8 @@ const typography = {
   bodySmall: getTextStyles(400, '14px', 1.29),
   bodySmallBold: getTextStyles(600, '14px', 1.29),
   bodyCaption: getTextStyles(400, '13px', 1.23),
+
+  getTextStyles,
 };
 
 export default typography;

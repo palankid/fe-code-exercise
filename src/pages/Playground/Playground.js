@@ -6,6 +6,11 @@ import LoadingLogo from 'components/LoadingLogo';
 import Text, { TextLight } from 'components/Text';
 import { Card, CardHeader, CardBody, CardFooter } from 'components/Card';
 import { Table, TableThCell, TableCell, TableRow } from 'components/Table';
+import DataGrid from 'components/DataGrid';
+import SearchInput from 'components/SearchInput';
+import CheckboxGroup from 'components/Checkbox';
+import RadioGroup from 'components/RadioButton';
+import Alert from 'components/Alert';
 import TextField from 'components/Form/TextField';
 import SelectField from 'components/Form/SelectField';
 
@@ -30,6 +35,14 @@ const TitleComponent = styled.h2`
 
 const Demo = styled.main`
   padding: 16px 0 32px;
+
+  ${(props) =>
+    props.gaps &&
+    `
+    & > * {
+      margin-right: 5px;
+    }
+  `}
 `;
 
 export default function Playground() {
@@ -45,6 +58,44 @@ export default function Playground() {
       </TextLight>
       <Link to="/">Go Home</Link>
 
+      <TitleComponent>{`<Alert>`}</TitleComponent>
+      <Demo>
+        <Alert message="The house is on fire!" onClick={() => console.log('clicked')} />
+      </Demo>
+
+      <TitleComponent>{`<RadioButton>`}</TitleComponent>
+      <Demo>
+        <RadioGroup
+          options={[
+            { label: 'First', description: 'The first description', value: 'first' },
+            { label: 'Second', description: 'The second description', value: 'second' },
+            { label: 'Third', description: 'The third description', value: 'third' },
+          ]}
+          selectedValue="second"
+          gap={10}
+          onChange={(selectedValues) => console.log(selectedValues)}
+        />
+      </Demo>
+
+      <TitleComponent>{`<CheckboxGroup>`}</TitleComponent>
+      <Demo>
+        <CheckboxGroup
+          options={[
+            { label: 'First', value: 'first' },
+            { label: 'Second', value: 'second' },
+            { label: 'Third', value: 'third' },
+          ]}
+          selectedValues={['second']}
+          gap={10}
+          onChange={(selectedValues) => console.log(selectedValues)}
+        />
+      </Demo>
+
+      <TitleComponent>{`<SearchInput>`}</TitleComponent>
+      <Demo>
+        <SearchInput placeholder="Search employees..." />
+      </Demo>
+
       <TitleComponent>{`<Text>`}</TitleComponent>
       <Demo>
         <Text as="p" size="body">
@@ -53,8 +104,13 @@ export default function Playground() {
       </Demo>
 
       <TitleComponent>{`<Button>`}</TitleComponent>
-      <Demo>
-        <Button>Continue</Button>
+      <Demo gaps>
+        <Button>Default</Button>
+        <Button outline>Outline</Button>
+        <Button progress>Default</Button>
+        <Button outline progress>
+          Outline
+        </Button>
       </Demo>
 
       <TitleComponent>{`<Card>`}</TitleComponent>
@@ -96,6 +152,61 @@ export default function Playground() {
                 </TableRow>
               </tbody>
             </Table>
+          </CardBody>
+        </Card>
+      </Demo>
+
+      <TitleComponent>{`<DataGrid>`}</TitleComponent>
+      <Demo>
+        <Card>
+          <CardBody>
+            <DataGrid
+              columns={[
+                { title: 'Employee Name', key: 'name' },
+                { title: 'Age', key: 'age' },
+                { title: 'E-mail', key: 'email' },
+                { title: 'Salary', key: 'salary', align: 'right' },
+                { title: '', key: 'action', cellRenderer: (row, column) => {
+                  return (
+                    <a href="http://www.index.hu">Hello world</a>
+                  )
+                }},
+              ]}
+              dataProvider={[
+                { name: 'John Smith', age: 25, email: 'johnsmith@there.com', salary: 35000, currency: 'EUR' },
+                { name: 'Mary Jones', age: 34, email: 'maryjones@there.com', salary: 45000, currency: 'USD' },
+              ]}
+            />
+          </CardBody>
+        </Card>
+
+        <Card style={{ marginTop: '20px' }}>
+          <CardBody>
+            <DataGrid
+              columns={[
+                { title: 'Employee Name', key: 'name' },
+                { title: 'Age', key: 'age' },
+                { title: 'E-mail', key: 'email' },
+                { title: 'Salary', key: 'salary', align: 'right' },
+              ]}
+              dataProvider={[]}
+              loading={false}
+            />
+          </CardBody>
+        </Card>
+
+        <Card style={{ marginTop: '20px' }}>
+          <CardBody>
+            <DataGrid
+              columns={[
+                { title: 'Employee Name', key: 'name' },
+                { title: 'Age', key: 'age' },
+                { title: 'E-mail', key: 'email' },
+                { title: 'Salary', key: 'salary', align: 'right' },
+              ]}
+              dataProvider={[]}
+              loading={true}
+            />
           </CardBody>
         </Card>
       </Demo>

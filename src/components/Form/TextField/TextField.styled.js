@@ -21,4 +21,8 @@ export const Input = styled.input`
   &::placeholder {
     color: var(--colors-bayoux);
   }
+
+  &:invalid {
+    border-bottom-color: var(--colors-redPink);
+  }
 `;

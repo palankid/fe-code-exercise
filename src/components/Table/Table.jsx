@@ -4,7 +4,7 @@ export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0 0;
-  ${({ theme }) => theme.typography.bodySmall};
+  ${({ theme }) => theme?.typography?.bodySmall};
   color: var(--colors-bayoux);
 
   thead {
@@ -42,7 +42,7 @@ TableThCell.defaultProps = {
 export const TableCell = styled.td`
   height: 64px;
   padding: 8px 16px 8px 16px;
-  border-top: 1px solid var(--colors-mischka);
+  border-bottom: 1px solid var(--colors-mischka);
   text-align: ${({ align }) => align};
 
   ${TableRow}:first-child & {
@@ -56,7 +56,6 @@ export const TableCell = styled.td`
   &:last-child {
     padding-right: 16px;
     border-radius: 0 8px 8px 0;
-    border-bottom: 0;
   }
 `;
 

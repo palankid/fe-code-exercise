@@ -1,3 +1,6 @@
+import React from 'react';
+import { string } from 'prop-types';
+
 import { Field, Label, Hint } from '../FieldParts';
 import { Input } from './TextField.styled';
 
@@ -13,6 +16,13 @@ export default function TextField({ label, helper, errorMsg, ...props }) {
   );
 }
 
+TextField.propTypes = {
+  label: string.isRequired,
+  helper: string,
+  errorMsg: string,
+};
+
 TextField.defaultProps = {
-  type: 'text',
+  helper: '',
+  errorMsg: '',
 };
