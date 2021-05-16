@@ -1,4 +1,3 @@
-
 const api = async (url, method, payload = null) => {
   const response = await fetch(url, {
     method,

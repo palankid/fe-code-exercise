@@ -1,17 +1,24 @@
 import React from 'react';
 import { array, bool } from 'prop-types';
+import styled from 'styled-components';
 
 import { Table } from 'components/Table';
 
 import Header from './Header';
 import Body from './Body';
 
+const ScrollableContainer = styled.div`
+  overflow-x: auto;
+`;
+
 const DataGrid = ({ columns, dataProvider, loading }) => {
   return (
-    <Table>
-      <Header columns={columns} />
-      <Body columns={columns} dataProvider={dataProvider} loading={loading} />
-    </Table>
+    <ScrollableContainer>
+      <Table>
+        <Header columns={columns} />
+        <Body columns={columns} dataProvider={dataProvider} loading={loading} />
+      </Table>
+    </ScrollableContainer>
   );
 };
 

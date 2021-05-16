@@ -6,7 +6,6 @@ import { ReactComponent as IconTimesCircle } from 'theme/icons/times-circle.svg'
 
 import { AlertStyled } from './Alert.styled';
 
-
 const Alert = ({ message, visible, onClick }) => {
   const [isVisible, setIsVisible] = useState(visible);
 

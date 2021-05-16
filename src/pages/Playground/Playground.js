@@ -162,9 +162,10 @@ export default function Playground() {
           <CardBody>
             <DataGrid
               columns={[
-                { title: 'Employee Name', key: 'name' },
-                { title: 'Age', key: 'age' },
-                { title: 'E-mail', key: 'email' },
+                { title: 'Name', key: 'name', minWidth: '200px' },
+                { title: 'Role', key: 'role' },
+                { title: 'Type', key: 'type' },
+                { title: 'Country', key: 'country' },
                 { title: 'Salary', key: 'salary', align: 'right' },
                 { title: '', key: 'action', cellRenderer: (row, column) => {
                   return (
@@ -173,8 +174,8 @@ export default function Playground() {
                 }},
               ]}
               dataProvider={[
-                { name: 'John Smith', age: 25, email: 'johnsmith@there.com', salary: 35000, currency: 'EUR' },
-                { name: 'Mary Jones', age: 34, email: 'maryjones@there.com', salary: 45000, currency: 'USD' },
+                { name: 'John Smith', role: 'Product manager', type: 'Employee', country: 'Portugal', salary: '35,000' },
+                { name: 'Paul Clark', role: 'Software engineer', type: 'Contractor', country: 'United States', salary: '100,000' },
               ]}
             />
           </CardBody>

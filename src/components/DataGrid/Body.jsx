@@ -7,7 +7,6 @@ import EmptyBody from './EmptyBody';
 
 export const TableCellStyled = styled(TableCell)`
   text-align: ${({ align }) => align};
-  ${({ colSpan }) => colSpan};
 `;
 
 const Body = ({ columns, dataProvider, loading }) => (

@@ -3,8 +3,11 @@ import styled from 'styled-components';
 import { Card, CardHeader, CardBody } from 'components/Card';
 import { Table, TableThCell, TableCell, TableRow } from 'components/Table';
 
+import PageHeader from './components/PageHeader';
+import FilterBar from './components/FilterBar';
+
 const Container = styled.main`
-  margin: 40px auto;
+  margin: 17px auto 40px;
   width: 100%;
   max-width: var(--layout-width);
 `;
@@ -12,11 +15,10 @@ const Container = styled.main`
 export default function People() {
   return (
     <Container>
-      <h1>People</h1>
-
+      <PageHeader />
       <Card>
         <CardHeader small>
-          
+          <FilterBar />
         </CardHeader>
         <CardBody>
           <Table>

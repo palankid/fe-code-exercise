@@ -12,10 +12,11 @@ function getTextStyles(fontWeight, fontSize, lineHeight) {
 }
 
 const typography = {
-  h1: getTextStyles(500, '30px', 1.34),
-  h2: getTextStyles(500, '26px', 1.23),
-  h3: getTextStyles(500, '24px', 1.25),
-  h4: getTextStyles(500, '22px', 1.28),
+  h1: getTextStyles(400, '30px', 1.34),
+  h2: getTextStyles(400, '26px', 1.23),
+  h2Medium: getTextStyles(500, '26px', 1.23),
+  h3: getTextStyles(400, '24px', 1.25),
+  h4: getTextStyles(400, '22px', 1.28),
 
   bodyLead: getTextStyles(400, '18px', 1.44),
 
