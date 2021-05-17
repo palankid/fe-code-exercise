@@ -1,30 +1,44 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import SearchInput from 'components/SearchInput';
 import CheckboxGroup from 'components/Checkbox';
+import debounce from 'utils/debounce';
 
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
+import { usePeopleStore, usePeopleDispatch, peopleActions } from 'pages/People/store';
+import { Wrapper } from './FilterBar.styled';
 
 const options = [
   { label: 'Contractor', value: 'contractor' },
   { label: 'Employee', value: 'employee' },
 ];
 
+const debouncedFilterPeopleByName = debounce(peopleActions.filterPeopleByName, 500);
+
 const FilterBar = () => {
+  const store = usePeopleStore();
+  const dispatch = usePeopleDispatch();
+
+  const handleEmployeeNameChange = (value) => {
+    debouncedFilterPeopleByName(dispatch, value);
+  };
+
+  const handleEmployeeTypeChange = (selectedValues) => {
+    peopleActions.filterPeopleByRole(dispatch, selectedValues);
+  };
+
   return (
     <Wrapper>
-      <SearchInput placeholder="Search by name..." />
+      <SearchInput
+        placeholder="Search by name..."
+        defaultValue={store.employeeNameFilter}
+        onChange={handleEmployeeNameChange}
+      />
       <CheckboxGroup
-          options={options}
-          selectedValues={[]}
-          gap={15}
-          onChange={(selectedValues) => console.log(selectedValues)}
-        />
+        options={options}
+        selectedValues={store.employeeTypeFilter}
+        gap={15}
+        onChange={handleEmployeeTypeChange}
+      />
     </Wrapper>
   );
 };

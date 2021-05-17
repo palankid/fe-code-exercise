@@ -1,19 +1,32 @@
 import React from 'react';
-import { string, number } from 'prop-types';
+import { string, number, func } from 'prop-types';
 
 import { Container, Input, StyledSearchIcon } from './SearchInput.styled';
 
-const SearchInput = ({ placeholder, fontSize }) => {
+const SearchInput = ({ placeholder, fontSize, onChange, ...rest }) => {
+
+  const handleChange = (event) => {
+    event.preventDefault();
+    onChange(event.target.value);
+  }
+
   return (
     <Container>
       <StyledSearchIcon />
-      <Input role="input" placeholder={placeholder} fontSize={fontSize} />
+      <Input
+        role="input"
+        placeholder={placeholder}
+        fontSize={fontSize}
+        onChange={handleChange}
+        {...rest}
+      />
     </Container>
   );
 };
 
 SearchInput.propTypes = {
   placeholder: string.isRequired,
+  onChange: func.isRequired,
   fontSize: number,
 };
 

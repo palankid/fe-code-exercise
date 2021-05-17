@@ -1,39 +1,20 @@
 import React from 'react';
-import styled from 'styled-components';
+import { useHistory } from "react-router-dom";
 
-import Button from 'components/Button';
 import Text from 'components/Text';
-import { ReactComponent as UserIcon } from 'theme/icons/user.svg';
-
-const Wrapper = styled.div`
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const ButtonContent = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const UserIconStyled = styled(UserIcon)`
-  fill: var(--colors-blank);
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-`;
-
-const ButtonStyled = styled(Button)`
-  box-shadow: 0 6px 12px rgba(98, 77, 227, 0.3);
-`;
+import { Wrapper, ButtonStyled, ButtonContent, UserIconStyled } from './PageHeader.styled';
 
 const PageHeader = () => {
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push('/people/new');
+  };
+
   return (
     <Wrapper>
       <Text size="h2Medium">People</Text>
-      <ButtonStyled>
+      <ButtonStyled onClick={handleClick}>
         <ButtonContent>
           <UserIconStyled />
           <span>Add member</span>

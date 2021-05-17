@@ -2,7 +2,7 @@ import { get, post, patch } from './api';
 
 const ENDPOINT = 'http://localhost:4002/people';
 
-export const getAllPersons = async () => {
+export const getAllPeople = async () => {
   return await get(ENDPOINT);
 };
 
