@@ -93,7 +93,8 @@ export default function Playground() {
 
       <TitleComponent>{`<SearchInput>`}</TitleComponent>
       <Demo>
-        <SearchInput placeholder="Search employees..." />
+        <SearchInput placeholder="Search employees..." onChange={(text) => console.log(text)} />
+        <SearchInput placeholder="Debounced search..." debounced onChange={(text) => console.log(text)} />
       </Demo>
 
       <TitleComponent>{`<Text>`}</TitleComponent>

@@ -12,7 +12,7 @@ describe('SearchInput', () => {
     expect(input.value).toBe('Initial value')
   });
 
-  it('fires change event', () => {
+  it('fires a change event', () => {
     const handleChange = jest.fn();
     render(<SearchInput value="" placeholder="Placeholder" onChange={handleChange} />);
 
@@ -20,5 +20,22 @@ describe('SearchInput', () => {
     fireEvent.change(input, { target: { value: 'Hello world' } });
 
     expect(handleChange).toHaveBeenCalledWith('Hello world');
+  });
+
+  it('fires a change event after 500ms', () => {
+    jest.useFakeTimers();
+    const handleChange = jest.fn();
+    render(<SearchInput value="" placeholder="Placeholder" debounced onChange={handleChange} />);
+
+    const input = screen.getByRole('input');
+    fireEvent.change(input, { target: { value: 'Hello world' } });
+
+    expect(handleChange).not.toHaveBeenCalled();
+
+    jest.advanceTimersByTime(500);
+
+    expect(handleChange).toHaveBeenCalled();
+
+    jest.useRealTimers();
   });
 });

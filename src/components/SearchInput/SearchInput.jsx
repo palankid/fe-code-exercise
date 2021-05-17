@@ -1,13 +1,30 @@
-import React from 'react';
-import { string, number, func } from 'prop-types';
+import React, { useState, useCallback } from 'react';
+import { string, number, func, bool } from 'prop-types';
+
+import debounce from 'utils/debounce';
 
 import { Container, Input, StyledSearchIcon } from './SearchInput.styled';
 
-const SearchInput = ({ placeholder, fontSize, onChange, ...rest }) => {
+const SearchInput = ({ placeholder, fontSize, onChange, debounced, ...rest }) => {
+  const [, setValue] = useState('');
+
+  /* eslint-disable react-hooks/exhaustive-deps */
+  const debouncedOnChange = useCallback(
+    debounce(nextValue => onChange(nextValue), 500),
+    [],
+  );
 
   const handleChange = (event) => {
+    const { value } = event.target;
     event.preventDefault();
-    onChange(event.target.value);
+    
+    if (debounced) {
+      setValue(value);
+      debouncedOnChange(value);
+      return;
+    }
+    
+    onChange(value);
   }
 
   return (
@@ -28,10 +45,12 @@ SearchInput.propTypes = {
   placeholder: string.isRequired,
   onChange: func.isRequired,
   fontSize: number,
+  debounced: bool,
 };
 
 SearchInput.defaultProps = {
   fontSize: 14,
+  debounced: false
 };
 
 export default SearchInput;

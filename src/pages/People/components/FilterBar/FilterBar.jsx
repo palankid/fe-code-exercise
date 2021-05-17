@@ -2,7 +2,6 @@ import React from 'react';
 
 import SearchInput from 'components/SearchInput';
 import CheckboxGroup from 'components/Checkbox';
-import debounce from 'utils/debounce';
 
 import { usePeopleStore, usePeopleDispatch, peopleActions } from 'pages/People/store';
 import { Wrapper } from './FilterBar.styled';
@@ -12,14 +11,12 @@ const options = [
   { label: 'Employee', value: 'employee' },
 ];
 
-const debouncedFilterPeopleByName = debounce(peopleActions.filterPeopleByName, 500);
-
 const FilterBar = () => {
   const store = usePeopleStore();
   const dispatch = usePeopleDispatch();
 
   const handleEmployeeNameChange = (value) => {
-    debouncedFilterPeopleByName(dispatch, value);
+    peopleActions.filterPeopleByName(dispatch, value);
   };
 
   const handleEmployeeTypeChange = (selectedValues) => {
@@ -31,6 +28,7 @@ const FilterBar = () => {
       <SearchInput
         placeholder="Search by name..."
         defaultValue={store.employeeNameFilter}
+        debounced
         onChange={handleEmployeeNameChange}
       />
       <CheckboxGroup
