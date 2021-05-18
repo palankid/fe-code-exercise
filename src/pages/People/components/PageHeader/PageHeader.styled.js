@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { media } from 'theme';
+
 import { ReactComponent as UserIcon } from 'theme/icons/user.svg';
 import Button from 'components/Button';
 
@@ -8,16 +10,19 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  ${media.large`
+    margin: 0 10px;
+  `}
 `;
 
-export const TitleWrapper = styled.span``;
+export const TitleWrapper = styled.div``;
 
 export const SelectedPeopleIndicator = styled.span`
   ${({ theme }) => theme?.typography?.bodyCaption}
   margin-left: 10px;
   color: var(--colors-lynch);
 `;
-
 
 export const ButtonContent = styled.div`
   display: flex;

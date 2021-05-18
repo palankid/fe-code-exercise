@@ -229,6 +229,22 @@ export default function Playground() {
             />
           </CardBody>
         </Card>
+
+        <Card style={{ marginTop: '20px' }}>
+          <CardBody>
+            <DataGrid
+              columns={[
+                { title: 'Employee Name', key: 'name' },
+                { title: 'Age', key: 'age' },
+                { title: 'E-mail', key: 'email' },
+                { title: 'Salary', key: 'salary', align: 'right' },
+              ]}
+              dataProvider={[]}
+              loading={false}
+              errorMessage="This is an error message"
+            />
+          </CardBody>
+        </Card>
       </Demo>
 
       <TitleComponent>{`<TextField>`}</TitleComponent>

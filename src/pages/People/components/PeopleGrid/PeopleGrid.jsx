@@ -8,7 +8,7 @@ import usePeople from './usePeople';
 const nameCellRenderer = (row, column) => <NameCell>{row.name}</NameCell>;
 const salaryCellRenderer = (row, column) => {
   const cellValue = `${row.currency} ${row.salary.toLocaleString()}`;
-  return <SalaryCell>{cellValue}</SalaryCell>
+  return <SalaryCell>{cellValue}</SalaryCell>;
 };
 const linkCellRenderer = (row, column) => {
   const link = `/people/edit/${row.id}`;
@@ -38,9 +38,16 @@ const columns = [
 ];
 
 const PeopleGrid = () => {
-  const { people, loading } = usePeople();
+  const { people, loading, error } = usePeople();
 
-  return <DataGrid columns={columns} dataProvider={people} loading={loading} />;
+  return (
+    <DataGrid
+      columns={columns}
+      dataProvider={people}
+      loading={loading}
+      errorMessage={error ? 'Ups, something in our servers went wrong!' : ''}
+    />
+  );
 };
 
 export default PeopleGrid;

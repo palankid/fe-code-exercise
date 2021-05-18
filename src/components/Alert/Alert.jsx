@@ -11,7 +11,7 @@ const Alert = ({ message, visible, onClick }) => {
 
   const handleClick = () => {
     setIsVisible(!isVisible);
-    onClick(!isVisible);
+    onClick && onClick(!isVisible);
   };
 
   if (!isVisible) return null;
@@ -28,7 +28,7 @@ const Alert = ({ message, visible, onClick }) => {
 
 Alert.propTypes = {
   message: string.isRequired,
-  onClick: func.isRequired,
+  onClick: func,
   visible: bool,
 };
 

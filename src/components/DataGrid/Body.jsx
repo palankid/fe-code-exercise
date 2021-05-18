@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { array, bool } from 'prop-types';
+import { array, bool, string } from 'prop-types';
 
 import { TableRow, TableCell } from 'components/Table';
 import EmptyBody from './EmptyBody';
@@ -11,9 +11,14 @@ export const TableCellStyled = styled(TableCell)`
   ${({ theme }) => theme?.typography?.bodySmall}
 `;
 
-const Body = ({ columns, dataProvider, loading }) => (
+const Body = ({ columns, dataProvider, loading, errorMessage }) => (
   <tbody>
-    <EmptyBody visible={!dataProvider.length} colSpan={columns.length} loading={loading} />
+    <EmptyBody
+      visible={!dataProvider.length}
+      colSpan={columns.length}
+      loading={loading}
+      errorMessage={errorMessage}
+    />
 
     {!loading &&
       dataProvider.map((row, rowIndex) => (
@@ -37,10 +42,12 @@ Body.propTypes = {
   columns: array.isRequired,
   dataProvider: array.isRequired,
   loading: bool,
+  errorMessage: string,
 };
 
 Body.defaultProps = {
   loading: false,
+  errorMessage: '',
 };
 
 export default Body;
