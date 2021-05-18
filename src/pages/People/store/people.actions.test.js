@@ -5,17 +5,17 @@ import {
   FETCH_PEOPLE_FAILURE,
 } from './people.actions';
 
-import { getAllPeople } from 'api/people';
+import { getPeople } from 'api/people';
 
 jest.mock('api/people', () => ({
-  getAllPeople: jest.fn(),
+  getPeople: jest.fn(),
 }));
 
 describe('People Actions', () => {
   describe('fetchPeople', () => {
     it('happy path', async () => {
       const dispatch = jest.fn();
-      getAllPeople.mockImplementation(() => Promise.resolve('It works'));
+      getPeople.mockImplementation(() => Promise.resolve('It works'));
       await fetchPeople(dispatch);
 
       expect(dispatch).toHaveBeenCalledTimes(2);
@@ -36,7 +36,7 @@ describe('People Actions', () => {
 
     it('unhappy path', async () => {
       const dispatch = jest.fn();
-      getAllPeople.mockImplementation(() => Promise.reject('Houston, we have a problem!'));
+      getPeople.mockImplementation(() => Promise.reject('Houston, we have a problem!'));
       await fetchPeople(dispatch);
 
       expect(dispatch).toHaveBeenCalledTimes(2);

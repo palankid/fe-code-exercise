@@ -9,13 +9,7 @@ describe('Checkbox', () => {
   ];
 
   it('renders correctly', () => {
-    render(
-      <CheckboxGroup
-        options={options}
-        selectedValues={[]}
-        onChange={() => {}}
-      />
-    );
+    render(<CheckboxGroup options={options} selectedValues={[]} onChange={() => {}} />);
 
     const elements = screen.getAllByRole('button');
 
@@ -24,13 +18,7 @@ describe('Checkbox', () => {
 
   it('selects the second and third checkboxes', () => {
     const handleChange = jest.fn();
-    render(
-      <CheckboxGroup
-        options={options}
-        selectedValues={[]}
-        onChange={handleChange}
-      />
-    );
+    render(<CheckboxGroup options={options} selectedValues={[]} onChange={handleChange} />);
 
     const elements = screen.getAllByRole('button');
 

@@ -9,13 +9,7 @@ describe('Checkbox', () => {
   ];
 
   it('renders correctly', () => {
-    render(
-      <RadioGroup
-        options={options}
-        selectedValue=""
-        onChange={() => {}}
-      />
-    );
+    render(<RadioGroup options={options} selectedValue="" onChange={() => {}} />);
 
     const elements = screen.getAllByRole('button');
 
@@ -24,13 +18,7 @@ describe('Checkbox', () => {
 
   it('selects the second then the third RadioButton', () => {
     const handleChange = jest.fn();
-    render(
-      <RadioGroup
-        options={options}
-        selectedValue=""
-        onChange={handleChange}
-      />
-    );
+    render(<RadioGroup options={options} selectedValue="" onChange={handleChange} />);
 
     const elements = screen.getAllByRole('button');
 

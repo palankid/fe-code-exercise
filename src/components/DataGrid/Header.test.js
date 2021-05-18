@@ -27,6 +27,6 @@ describe('Header', () => {
     expect(cells).toHaveLength(4);
     cells.forEach((cell, idx) => {
       expect(cell.innerHTML).toEqual(columns[idx].title);
-    })
+    });
   });
 });

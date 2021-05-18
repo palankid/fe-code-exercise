@@ -9,7 +9,7 @@ export const Wrapper = styled.button`
   outline: none;
   min-height: 40px;
   padding: 0 12px;
-  background-color: white;  // Todo
+  background-color: white; // Todo
   border: 1.5px solid ${borderColor};
   border-radius: 12px;
   cursor: pointer;
@@ -25,7 +25,9 @@ export const Wrapper = styled.button`
     box-shadow: 0 0 1px 1px var(--colors-irisBlue);
   }
 
-  ${({ selected }) => selected && `
+  ${({ selected }) =>
+    selected &&
+    `
     background-color: var(--colors-linkWater);
   `}
 `;
@@ -50,15 +52,21 @@ export const CheckboxStyled = styled.span`
   background-color: var(--colors-blank);
   border: 1px solid ${borderColor};
 
-  ${({ isMouseOver }) => isMouseOver && `
+  ${({ isMouseOver }) =>
+    isMouseOver &&
+    `
     border-width: 2px;
   `}
 
-  ${({ isMouseOver, selected }) => (isMouseOver || selected) && `
+  ${({ isMouseOver, selected }) =>
+    (isMouseOver || selected) &&
+    `
     border-color: var(--colors-irisBlue);
   `}
 
-  ${({ isMouseOver, selected }) => selected && `
+  ${({ isMouseOver, selected }) =>
+    selected &&
+    `
     &::before {
       content: '';
       display: block;

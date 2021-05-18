@@ -21,7 +21,7 @@ describe('Functions Utils', () => {
     jest.advanceTimersByTime(1000);
 
     expect(originalFn).toHaveBeenCalled();
-  
+
     jest.useRealTimers();
   });
 });

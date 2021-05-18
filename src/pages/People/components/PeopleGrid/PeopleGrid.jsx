@@ -3,7 +3,7 @@ import React from 'react';
 import DataGrid from 'components/DataGrid';
 import { NameCell, SalaryCell, LinkCell } from './PeopleGrid.styled';
 
-import useFilteredPeople from './useFilteredPeople';
+import usePeople from './usePeople';
 
 const nameCellRenderer = (row, column) => <NameCell>{row.name}</NameCell>;
 const salaryCellRenderer = (row, column) => {
@@ -38,9 +38,9 @@ const columns = [
 ];
 
 const PeopleGrid = () => {
-  const { filteredPeople, loading } = useFilteredPeople();
+  const { people, loading } = usePeople();
 
-  return <DataGrid columns={columns} dataProvider={filteredPeople} loading={loading} />;
+  return <DataGrid columns={columns} dataProvider={people} loading={loading} />;
 };
 
 export default PeopleGrid;

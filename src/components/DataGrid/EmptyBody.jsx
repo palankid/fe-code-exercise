@@ -27,13 +27,12 @@ EmptyBody.propTypes = {
   visible: bool,
   loading: bool,
   colSpan: number,
-}
-
+};
 
 EmptyBody.defaultProps = {
   visible: true,
   loading: false,
   colSpan: 1,
-}
+};
 
 export default EmptyBody;

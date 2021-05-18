@@ -1,28 +1,28 @@
-const api = async (url, method, payload = null) => {
-  const response = await fetch(url, {
-    method,
-    headers: {
-      'Content-Type': 'application/json;charset=utf-8'
-    },
-    body: payload ? JSON.stringify(payload) : undefined,
-  });
+const fetchFactory = (method) => {
+  let controller;
 
-  if (!response.ok) {
-    const message = `An error has occured: ${response.status}`;
-    throw new Error(message);
-  }
+  return async (url, payload = null) => {
+    controller && controller.abort();
+    controller = new AbortController();
 
-  return await response.json();
-}
+    const response = await fetch(url, {
+      method,
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: payload ? JSON.stringify(payload) : undefined,
+      signal: controller.signal,
+    });
 
-export const get = async (url) => {
-  return await api(url, 'GET');
-}
+    if (!response.ok) {
+      const message = `An error has occured: ${response.status}`;
+      throw new Error(message);
+    }
 
-export const post = async (url, payload) => {
-  return await api(url, 'POST', payload);
-}
+    return await response.json();
+  };
+};
 
-export const patch = async (url, payload) => {
-  return await api(url, 'PATCH', payload);
-}
+export const get = fetchFactory('GET');
+export const post = fetchFactory('POST');
+export const patch = fetchFactory('PATCH');

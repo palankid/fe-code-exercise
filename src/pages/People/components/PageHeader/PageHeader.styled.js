@@ -10,6 +10,15 @@ export const Wrapper = styled.div`
   justify-content: space-between;
 `;
 
+export const TitleWrapper = styled.span``;
+
+export const SelectedPeopleIndicator = styled.span`
+  ${({ theme }) => theme?.typography?.bodyCaption}
+  margin-left: 10px;
+  color: var(--colors-lynch);
+`;
+
+
 export const ButtonContent = styled.div`
   display: flex;
   align-items: center;

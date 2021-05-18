@@ -94,7 +94,11 @@ export default function Playground() {
       <TitleComponent>{`<SearchInput>`}</TitleComponent>
       <Demo>
         <SearchInput placeholder="Search employees..." onChange={(text) => console.log(text)} />
-        <SearchInput placeholder="Debounced search..." debounced onChange={(text) => console.log(text)} />
+        <SearchInput
+          placeholder="Debounced search..."
+          debounced
+          onChange={(text) => console.log(text)}
+        />
       </Demo>
 
       <TitleComponent>{`<Text>`}</TitleComponent>
@@ -168,15 +172,29 @@ export default function Playground() {
                 { title: 'Type', key: 'type' },
                 { title: 'Country', key: 'country' },
                 { title: 'Salary', key: 'salary', align: 'right' },
-                { title: '', key: 'action', cellRenderer: (row, column) => {
-                  return (
-                    <a href="http://www.index.hu">Hello world</a>
-                  )
-                }},
+                {
+                  title: '',
+                  key: 'action',
+                  cellRenderer: (row, column) => {
+                    return <a href="http://www.index.hu">Hello world</a>;
+                  },
+                },
               ]}
               dataProvider={[
-                { name: 'John Smith', role: 'Product manager', type: 'Employee', country: 'Portugal', salary: '35,000' },
-                { name: 'Paul Clark', role: 'Software engineer', type: 'Contractor', country: 'United States', salary: '100,000' },
+                {
+                  name: 'John Smith',
+                  role: 'Product manager',
+                  type: 'Employee',
+                  country: 'Portugal',
+                  salary: '35,000',
+                },
+                {
+                  name: 'Paul Clark',
+                  role: 'Software engineer',
+                  type: 'Contractor',
+                  country: 'United States',
+                  salary: '100,000',
+                },
               ]}
             />
           </CardBody>

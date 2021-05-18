@@ -2,7 +2,7 @@ import {
   FETCH_PEOPLE_FAILURE,
   FETCH_PEOPLE_PROGRESS,
   FETCH_PEOPLE_SUCCESS,
-  FILTER_PEOPLE_BY_ROLE,
+  FILTER_PEOPLE_BY_TYPE,
   FILTER_PEOPLE_BY_NAME,
 } from './people.actions';
 
@@ -18,6 +18,7 @@ const peopleReducer = (state, action) => {
     case FETCH_PEOPLE_PROGRESS:
       return {
         ...state,
+        people: [],
         loading: true,
         error: false,
       };
@@ -27,7 +28,7 @@ const peopleReducer = (state, action) => {
         loading: false,
         error: true,
       };
-    case FILTER_PEOPLE_BY_ROLE:
+    case FILTER_PEOPLE_BY_TYPE:
       return {
         ...state,
         employeeTypeFilter: action.payload,

@@ -1,19 +1,25 @@
 import React from 'react';
-import { useHistory } from "react-router-dom";
 
 import Text from 'components/Text';
-import { Wrapper, ButtonStyled, ButtonContent, UserIconStyled } from './PageHeader.styled';
+import usePageHeader from './usePageHeader';
+import {
+  Wrapper,
+  ButtonStyled,
+  ButtonContent,
+  UserIconStyled,
+  SelectedPeopleIndicator,
+  TitleWrapper,
+} from './PageHeader.styled';
 
 const PageHeader = () => {
-  const history = useHistory();
-
-  const handleClick = () => {
-    history.push('/people/new');
-  };
+  const { selectedPeopleText, handleClick } = usePageHeader();
 
   return (
     <Wrapper>
-      <Text size="h2">People</Text>
+      <TitleWrapper>
+        <Text size="h2">People</Text>
+        <SelectedPeopleIndicator>{selectedPeopleText}</SelectedPeopleIndicator>
+      </TitleWrapper>
       <ButtonStyled onClick={handleClick}>
         <ButtonContent>
           <UserIconStyled />

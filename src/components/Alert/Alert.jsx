@@ -11,17 +11,19 @@ const Alert = ({ message, visible, onClick }) => {
 
   const handleClick = () => {
     setIsVisible(!isVisible);
-    onClick(!isVisible)
-  }
+    onClick(!isVisible);
+  };
 
   if (!isVisible) return null;
 
   return (
     <AlertStyled>
       <IconTimesCircle className="icon" role="button" onClick={handleClick} />
-      <Text className="text" size="bodyMedium">{message}</Text>
+      <Text className="text" size="bodyMedium">
+        {message}
+      </Text>
     </AlertStyled>
-  )
+  );
 };
 
 Alert.propTypes = {

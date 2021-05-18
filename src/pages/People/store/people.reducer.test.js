@@ -4,8 +4,8 @@ import {
   FETCH_PEOPLE_PROGRESS,
   FETCH_PEOPLE_SUCCESS,
   FETCH_PEOPLE_FAILURE,
-  FILTER_PEOPLE_BY_ROLE,
-  FILTER_PEOPLE_BY_NAME
+  FILTER_PEOPLE_BY_TYPE,
+  FILTER_PEOPLE_BY_NAME,
 } from './people.actions';
 
 describe('People Reducer', () => {
@@ -13,12 +13,12 @@ describe('People Reducer', () => {
     const payload = [{ id: 1 }, { id: 2 }];
     const expected = {
       ...initialState,
-      people: payload
+      people: payload,
     };
 
     const result = peopleReducer(initialState, {
       type: FETCH_PEOPLE_SUCCESS,
-      payload
+      payload,
     });
 
     expect(result).toEqual(expected);
@@ -52,7 +52,7 @@ describe('People Reducer', () => {
     expect(result).toEqual(expected);
   });
 
-  it('should handle FILTER_PEOPLE_BY_ROLE action', async () => {
+  it('should handle FILTER_PEOPLE_BY_TYPE action', async () => {
     const employeeTypeFilter = ['employee', 'contractor'];
     const expected = {
       ...initialState,
@@ -60,7 +60,7 @@ describe('People Reducer', () => {
     };
 
     const result = peopleReducer(initialState, {
-      type: FILTER_PEOPLE_BY_ROLE,
+      type: FILTER_PEOPLE_BY_TYPE,
       payload: employeeTypeFilter,
     });
 

@@ -9,7 +9,7 @@ const RadioButton = ({ label, value, description, selected, onChange }) => {
 
   const handleClick = () => {
     !selected && onChange(true);
-  }
+  };
 
   const handleMouseOver = (flag) => () => setIsMouseOver(flag);
 

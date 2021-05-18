@@ -10,7 +10,7 @@ describe('Alert', () => {
     expect(textElement).toBeInTheDocument();
   });
 
-  it('does not render the element when it\'s invisible', () => {
+  it("does not render the element when it's invisible", () => {
     render(<Alert message="Hello" onClick={() => {}} visible={false} />);
 
     const textElement = screen.queryByText('Hello');

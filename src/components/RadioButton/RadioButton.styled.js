@@ -7,8 +7,8 @@ export const Wrapper = styled.button`
   outline: none;
   min-height: 40px;
   padding: 0 20px;
-  background-color: white;  // Todo
-  border: 1.5px solid #CBD3DC;
+  background-color: white; // Todo
+  border: 1.5px solid #cbd3dc;
   border-radius: 12px;
   cursor: pointer;
 
@@ -16,7 +16,7 @@ export const Wrapper = styled.button`
   &:focus,
   &:active {
     background-color: var(--colors-linkWater);
-    border-color: #B7B8EB;
+    border-color: #b7b8eb;
   }
 
   &:focus,
@@ -24,7 +24,9 @@ export const Wrapper = styled.button`
     box-shadow: 0 0 1px 1px var(--colors-irisBlue);
   }
 
-  ${({ selected }) => selected && `
+  ${({ selected }) =>
+    selected &&
+    `
     background-color: var(--colors-linkWater);
     border-color: #B7B8EB;
   `}
@@ -68,17 +70,23 @@ export const Radio = styled.span`
   border-radius: 7px;
   margin-left: 11px;
   background-color: var(--colors-blank);
-  border: 1px solid #617798;
+  border: 1px solid var(--colors-lynch);
 
-  ${({ isMouseOver }) => isMouseOver && `
+  ${({ isMouseOver }) =>
+    isMouseOver &&
+    `
     border-width: 2px;
   `}
 
-  ${({ isMouseOver, selected }) => (isMouseOver || selected) && `
+  ${({ isMouseOver, selected }) =>
+    (isMouseOver || selected) &&
+    `
     border-color: var(--colors-irisBlue);
   `}
 
-  ${({ isMouseOver, selected }) => selected && `
+  ${({ isMouseOver, selected }) =>
+    selected &&
+    `
     &::before {
       content: '';
       display: block;

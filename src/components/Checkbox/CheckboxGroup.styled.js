@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const CheckboxGroupStyled = styled.div`
-  display: inline-block;
+  display: flex;
+  flex-wrap: wrap;
 
-  & > *:not(:first-child) {
-    margin-left: ${props => props.gap}px;
+  & > *:not(:last-child) {
+    margin-right: ${(props) => props.gap}px;
   }
 `;

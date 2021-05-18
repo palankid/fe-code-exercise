@@ -30,6 +30,6 @@ DataGrid.propTypes = {
 
 DataGrid.defaultProps = {
   loading: false,
-}
+};
 
 export default DataGrid;

@@ -5,7 +5,7 @@ import { array } from 'prop-types';
 import { TableThCell } from 'components/Table';
 
 export const TableThCellStyled = styled(TableThCell)`
-  text-align: ${({ align }) => align}
+  text-align: ${({ align }) => align};
 `;
 
 const Header = ({ columns }) => (
@@ -24,6 +24,6 @@ const Header = ({ columns }) => (
 
 Header.propTypes = {
   columns: array.isRequired,
-}
+};
 
 export default Header;

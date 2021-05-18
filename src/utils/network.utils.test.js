@@ -27,4 +27,14 @@ describe('addUrlParams', () => {
 
     expect(result).toBe(expected);
   });
+
+  it('should append the URL with array values', () => {
+    const result = addUrlParams(URL, {
+      name: 'John',
+      employment: ['employee', 'contractor', 'something else'],
+    });
+    const expected = `${URL}?name=John&employment=employee&employment=contractor&employment=something%20else`;
+
+    expect(result).toBe(expected);
+  });
 });
