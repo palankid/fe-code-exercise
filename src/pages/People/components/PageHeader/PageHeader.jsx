@@ -13,7 +13,7 @@ const PageHeader = () => {
 
   return (
     <Wrapper>
-      <Text size="h2Medium">People</Text>
+      <Text size="h2">People</Text>
       <ButtonStyled onClick={handleClick}>
         <ButtonContent>
           <UserIconStyled />

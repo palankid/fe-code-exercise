@@ -1,4 +1,4 @@
-import createStore from 'utils/createStore';
+import { createStore } from 'utils/store.utils';
 
 const reducer = (state, action) => state;
 const initialState = {};

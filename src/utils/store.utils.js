@@ -1,6 +1,6 @@
 import { createContext, useContext, useReducer } from 'react';
 
-const createStore = (reducer, initialState) => {
+export const createStore = (reducer, initialState) => {
   const StoreContext = createContext(initialState);
   const DispatchContext = createContext();
   
@@ -22,4 +22,17 @@ const createStore = (reducer, initialState) => {
   return [StoreProvider, useStore, useDispatch];
 }
 
-export default createStore;
+export const combineContexts = (...contexts) => (
+  contexts.reduce(
+    (CombinedContexts, CurrentContext) => (
+      ({ children }) => (
+        <CombinedContexts>
+          <CurrentContext>
+            {children}
+          </CurrentContext>
+        </CombinedContexts>
+      )
+    ),
+    ({ children }) => <>{children}</>,
+  )
+);

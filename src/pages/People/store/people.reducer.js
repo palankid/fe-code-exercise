@@ -13,16 +13,19 @@ const peopleReducer = (state, action) => {
         ...state,
         people: action.payload,
         loading: false,
+        error: false,
       };
     case FETCH_PEOPLE_PROGRESS:
       return {
         ...state,
         loading: true,
+        error: false,
       };
     case FETCH_PEOPLE_FAILURE:
       return {
         ...state,
         loading: false,
+        error: true,
       };
     case FILTER_PEOPLE_BY_ROLE:
       return {

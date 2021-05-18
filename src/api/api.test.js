@@ -25,7 +25,7 @@ describe('api', () => {
       expect(result).toEqual(payload);
     });
   
-    it('sad path', async () => {
+    it('unhappy path', async () => {
       window.fetch.mockResolvedValueOnce({
         ok: false,
         status: '404',
@@ -59,7 +59,7 @@ describe('api', () => {
       expect(result).toEqual(returnValue);
     });
 
-    it('sad path', async () => {
+    it('unhappy path', async () => {
       const returnValue = { error: 'error' };
       const payload = { post: 'this' }
       window.fetch.mockResolvedValueOnce({
@@ -95,7 +95,7 @@ describe('api', () => {
       expect(result).toEqual(returnValue);
     });
 
-    it('sad path', async () => {
+    it('unhappy path', async () => {
       const returnValue = { error: 'error' };
       const payload = { patch: 'this' }
       window.fetch.mockResolvedValueOnce({

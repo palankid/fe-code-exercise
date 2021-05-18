@@ -1,4 +1,4 @@
-import combineContexts from 'utils/combineContexts';
+import { combineContexts } from 'utils/store.utils';
 
 import { PeopleContextProvider } from 'pages/People/store';
 import { AddEditContextProvider } from 'pages/AddEditPeople/store';

@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { string, number, func, bool } from 'prop-types';
 
-import debounce from 'utils/debounce';
+import { debounce } from 'utils/functions.utils';
 
 import { Container, Input, StyledSearchIcon } from './SearchInput.styled';
 

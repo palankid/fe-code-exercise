@@ -9,16 +9,18 @@ export const FILTER_PEOPLE_BY_ROLE = 'PEOPLE:FILTER_PEOPLE_BY_ROLE';
 export const FILTER_PEOPLE_BY_NAME = 'PEOPLE:FILTER_PEOPLE_BY_NAME';
 
 export const fetchPeople = async (dispatch) => {
-  dispatch({
-    type: FETCH_PEOPLE_PROGRESS,
-  });
+  dispatch({ type: FETCH_PEOPLE_PROGRESS });
 
-  const result = await getAllPeople();
+  try {
+    const result = await getAllPeople();
 
-  dispatch({
-    type: FETCH_PEOPLE_SUCCESS,
-    payload: result,
-  });
+    dispatch({
+      type: FETCH_PEOPLE_SUCCESS,
+      payload: result,
+    });
+  } catch (e) {
+    dispatch({ type: FETCH_PEOPLE_FAILURE });
+  }
 };
 
 export const filterPeopleByRole = (dispatch, filter) => {
