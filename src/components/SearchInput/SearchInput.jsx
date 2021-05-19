@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useMemo } from 'react';
 import { string, number, func, bool } from 'prop-types';
 
 import { debounce } from 'utils/functions.utils';
@@ -8,11 +8,9 @@ import { Container, Input, StyledSearchIcon } from './SearchInput.styled';
 const SearchInput = ({ placeholder, fontSize, onChange, debounced, ...rest }) => {
   const [, setValue] = useState('');
 
-  /* eslint-disable react-hooks/exhaustive-deps */
-  const debouncedOnChange = useCallback(
-    debounce((nextValue) => onChange(nextValue), 500),
-    []
-  );
+  const debouncedOnChange = useMemo(() => debounce((nextValue) => onChange(nextValue), 500), [
+    onChange,
+  ]);
 
   const handleChange = (event) => {
     const { value } = event.target;

@@ -7,9 +7,8 @@ const usePeople = () => {
   const dispatch = usePeopleDispatch();
 
   useEffect(() => {
-    !people.length && peopleActions.fetchPeople(dispatch);
-    /* eslint-disable-next-line react-hooks/exhaustive-deps */
-  }, []);
+    !people.length && !loading && peopleActions.fetchPeople(dispatch);
+  }, [people, loading, dispatch]);
 
   return { people, loading, error };
 };

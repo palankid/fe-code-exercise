@@ -6,7 +6,7 @@ If you're reading this, it means you're now at the coding exercise step of the e
 
 In this exercise you're asked to implement some features in an existing React app, using whatever extra tools you want.
 
-If you have any questions, don't hesitate to reach out directly to marcelo@remote.com.
+If you have any questions, don't hesitate to reach out to us.
 
 ## Expectations
 
@@ -48,7 +48,7 @@ For further notes, follow the design specs in the Figma file shared with you by 
 #### When you're done
 
 - Complete the "Implementation Details" section at the bottom of this README.
-- Open a Pull Request in this repo and send the link to marcelo@remote.com.
+- Open a Pull Request in this repo.
 - You can also send some feedback about this exercise. Was it too short/big? Boring? Let us know!
 
 ### 👀 2. Code Review
@@ -58,6 +58,7 @@ There's an open Pull Request called "Add/Edit a team member" (`to-review` branch
 This PR implements the "Add Team Member" and the "Edit Team Member" pages. Imagine that this was done by one of your teammates, who is an intern, and you were tasked with reviewing their code.
 
 Your goal is to:
+
 - Check if the feature is working as expected
 - Point out code smells, poor practices or bugs
 - Give suggestions on how to approach them differently
@@ -135,4 +136,18 @@ This script runs automatically after `npm install`.
 
 ## Implementation details
 
-This section is for you to fill in with any decisions you made that may be relevant. You can also change this README to fit your needs.
+### Decision justifications:
+
+- **Components:** Even though it was stated in the task description that I can use any extra tools I need to accomplish the task, I decided to implement the general purpose tools from scratch as I know that you build your own proprietary components at Remote. The implemented components' features are minimalistic, they serve their current purpose well. However there is definitely room for further improvements, especially in relation to the DataGrid that could not hold tens of thousands of records at it's current state without noticeable performance degradation. The solution would be to either implement infinite scrolling or paging (or both).
+
+- **Store management:** I decided to go with React's Context API. It's an appropriate choice if it's expected that the number of screen/component re-renders are not significant and therefore the application's performance is not a concern. However I approached it with a better performance as well as better separation of concerns in mind, I introduced a feature based separation, each feature would have it's own context provider with this approach. All providers are placed together at the top of the component hierarchy, so that the data is kept while the user navigates between routes and data is accessible if a route has to have access to data from an other route.
+
+- **REST API and utility functions:** Same goes for this group of features.
+
+- **Fonts:** The font definitions has been moved from GlobalStyles.js into a separate css as the previous solution caused the screen to flicker.
+
+- **Folder structure:** The original folder structure - that is feature based - has been kept as it's pretty much appropriate for my taste as well. It's easy to maintain, easy to extend and it gives a good developer experience if feature related components, store management are closer to each other compared to strict file type folder structure.
+
+- **Styling:** There might be some suboptimal approaches as my understanding with styled-components is not complete yet, this is the first time I touch based with this kind of an approach.
+
+Adding, modifying, deleting people has not yet been implemented - as it was not a requirement - but I will definitely revisit them at a later stage - outside of the current scope - because the current solution feels incomplete. :)

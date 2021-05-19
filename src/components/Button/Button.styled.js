@@ -3,7 +3,6 @@ import styled, { keyframes } from 'styled-components';
 const borderColor = '#D0CAF7';
 
 export const ButtonStyled = styled.button`
-  font-family: var(--font-primary);
   ${({ theme }) => theme?.typography?.bodyMedium}
   min-height: 44px;
   min-width: 182px;

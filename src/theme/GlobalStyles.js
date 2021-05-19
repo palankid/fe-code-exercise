@@ -1,13 +1,10 @@
 import { normalize } from 'styled-normalize';
 import { createGlobalStyle } from 'styled-components';
-import fontFaces from './fonts/styles';
 import colors from './colors';
 
 const GlobalStyles = createGlobalStyle`
   ${normalize}
 
-  ${fontFaces}
-  
   :root {
     ${colors}
 

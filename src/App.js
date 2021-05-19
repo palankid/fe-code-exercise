@@ -12,6 +12,8 @@ import Playground from './pages/Playground';
 import People from './pages/People';
 import AddEditPeople from './pages/AddEditPeople';
 
+import 'theme/fonts/fonts.css';
+
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
