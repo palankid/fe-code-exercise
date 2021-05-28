@@ -7,8 +7,8 @@ const usePeople = () => {
   const dispatch = usePeopleDispatch();
 
   useEffect(() => {
-    !people.length && !loading && peopleActions.fetchPeople(dispatch);
-  }, [people, loading, dispatch]);
+    peopleActions.fetchPeople(dispatch);
+  }, [dispatch]);
 
   return { people, loading, error };
 };
